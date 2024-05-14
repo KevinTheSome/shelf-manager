@@ -19,7 +19,13 @@ class AuthController extends Controller
 
     public function loginUser(Request $request)
     {
-        
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return response()->json(['message' => 'Login successful'], 200);
+        } else {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
     }
 
     public function registerUser(Request $request)
