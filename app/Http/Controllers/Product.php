@@ -17,4 +17,24 @@ class Product extends Controller
         return view('product');
     }
 
+    public function edit(Request $request)
+    {
+        return view('product');
+    }
+
+    public function update(Request $request)
+    {
+        return view('product');
+    }
+
+    public function delete()
+    {
+        return view('product');
+    }
+
+    public function create(Request $request)
+    {
+        return view('product');
+    }
+
 }

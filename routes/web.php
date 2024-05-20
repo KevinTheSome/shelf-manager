@@ -15,9 +15,10 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/register',[AuthController::class, 'register'])->name('register');
 });
  
+Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
-    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
 
     //7 restul aciones for products
     Route::get('/product/index', [Product::class, 'index']);
