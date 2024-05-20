@@ -6,7 +6,7 @@
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to your account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="/login" method="POST"> 
+              <form method="POST" action="/loginUser" class="space-y-4 md:space-y-6"> 
                 @csrf
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
@@ -20,7 +20,7 @@
                   <div class="alert alert-danger">
                       <ul>
                           @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
+                          <li class="text-red-500">{{ $error }}</li>
                           @endforeach
                       </ul>
                   </div>
