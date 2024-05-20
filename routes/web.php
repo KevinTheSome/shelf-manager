@@ -18,13 +18,11 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/loginUser',[AuthController::class, 'loginUser'])->name('loginUser');
 });
  
-Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('/orders',[OrdersControllers::class, 'index'])->name('orders');
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
+    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/orders',[OrdersControllers::class, 'index'])->name('orders');
     //7 restul aciones for products
     Route::get('/product/index', [Product::class, 'index']);
     Route::get('/product/{id}', [Product::class, 'show']);
