@@ -1,4 +1,5 @@
 <x-layout title="dashboard">
+<x-navbar></x-navbar>
 <section>
         <div class="container mx-auto">
             <div class="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 mt-6">
