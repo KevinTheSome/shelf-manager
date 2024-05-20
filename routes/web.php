@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrdersControllers;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Product;
 
@@ -16,6 +17,8 @@ Route::group(['middleware' => 'guest'], function () {
 });
  
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/orders',[OrdersControllers::class, 'index'])->name('orders');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
