@@ -19,7 +19,7 @@ class AuthController extends Controller
         return view('register');
     }
 
-    public function loginUser(Request $request)
+    public function loginPost(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
