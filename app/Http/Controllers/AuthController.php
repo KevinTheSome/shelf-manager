@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -30,13 +31,26 @@ class AuthController extends Controller
 
     public function registerUser(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->intended('/dashboard');
     }
 
     public function logout()
     {
-        session()->invalidate();
-        auth()->logout();
-        return redirect()->intended('/login');
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
