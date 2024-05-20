@@ -6,7 +6,11 @@
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Create an account
               </h1>
+<<<<<<< HEAD
               <form method="POST" action="/registerUser" class="space-y-4 md:space-y-6">
+=======
+              <form class="space-y-4 md:space-y-6" action="/register" method="post" >
+>>>>>>> fe09148 (Added @csrf)
                 @csrf
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
