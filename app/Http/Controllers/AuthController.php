@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -18,15 +19,22 @@ class AuthController extends Controller
         return view('register');
     }
 
-    public function loginUser(Request $request)
+    public function loginPost(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
         if (Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Login successful'], 200);
-        } else {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('/dashboard');
         }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function registerUser(Request $request)
@@ -38,16 +46,14 @@ class AuthController extends Controller
             'roles' => 'required|in:Admin,Stocker,Accountant',
         ]);
 
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            'roles' => $request['roles'],
-        ]);
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->roles = $request->input('roles');
+        $user->save();
 
-        Auth::login($user);
-
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/login');  
     }
 
     public function logout()
