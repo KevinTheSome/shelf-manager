@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layout title="dashboard">
+<x-navbar></x-navbar>
     <h1>Edit Product</h1>
     <form action="{{ route('products.update', $product->id) }}" method="POST">
         @csrf
@@ -19,4 +18,4 @@
         </div>
         <button type="submit">Update</button>
     </form>
-@endsection
+</x-layout>

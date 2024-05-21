@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layout title="dashboard">
+<x-navbar></x-navbar>
     <h1>{{ $product->name }}</h1>
     <p>{{ $product->description }}</p>
     <p>Amount: {{ $product->amount }}</p>
@@ -11,4 +10,4 @@
         <button type="submit">Delete</button>
     </form>
     <a href="{{ route('products.index') }}">Back to List</a>
-@endsection
+</x-layout>

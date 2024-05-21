@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layout title="dashboard">
+<x-navbar></x-navbar>
     <h1>Create Product</h1>
     <form action="{{ route('products.store') }}" method="POST">
         @csrf
@@ -18,4 +17,4 @@
         </div>
         <button type="submit">Create</button>
     </form>
-@endsection
+</x-layout>
