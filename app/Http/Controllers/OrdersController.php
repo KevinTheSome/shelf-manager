@@ -12,12 +12,12 @@ class OrdersController extends Controller
         return view('orders');
     }
 
-    public function create()
+    public function new()
     {
-        return view('orders.create');
+        return view('orders.new');
     }
 
-    public function createOrder(Request $request)
+    public function create(Request $request)
     {
         $request->validate([
             'orderDate' => 'required|date',

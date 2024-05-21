@@ -33,4 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/product/{id}/edit', [Product::class, 'edit']);
     Route::put('/product/{id]', [Product::class, 'update']);
     Route::delete('/product/{id}', [Product::class, 'destroy']);
+
+    Route::get('/orders/new', [OrdersController::class, 'new']);
+    Route::post('/orders/create', [OrdersController::class, 'create']);
 });
