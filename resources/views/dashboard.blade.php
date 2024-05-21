@@ -11,17 +11,17 @@
                         
                         <div class="bg-blue-100 p-5 rounded-lg shadow">
                             <h3 class="text-lg font-semibold mb-3">Products</h3>
-                            <p class="text-gray-700 dark:text-gray-400">Content for widget 1.</p>
+                            <a href='products/create' class="text-gray-700 dark:text-gray-400">Create a Product</a>
                         </div>
                         
                         <div class="bg-green-100 p-5 rounded-lg shadow">
-                            <h3 class="text-lg font-semibold mb-3">Widget 2</h3>
-                            <p class="text-gray-700 dark:text-gray-400">Content for widget 2.</p>
+                            <h3 class="text-lg font-semibold mb-3">Orders</h3>
+                            <a href='' class="text-gray-700 dark:text-gray-400">Create a Order</a>
                         </div>
                         
                         <div class="bg-yellow-100 p-5 rounded-lg shadow">
-                            <h3 class="text-lg font-semibold mb-3">Widget 3</h3>
-                            <p class="text-gray-700 dark:text-gray-400">Content for widget 3.</p>
+                            <h3 class="text-lg font-semibold mb-3">Reports</h3>
+                            <a href='' class="text-gray-700 dark:text-gray-400">Create a Report</a>
                         </div>
 
                     </div>
