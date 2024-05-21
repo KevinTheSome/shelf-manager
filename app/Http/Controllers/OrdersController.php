@@ -9,7 +9,7 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        return view('orders');
+        return view('orders.index');
     }
 
     public function new()
