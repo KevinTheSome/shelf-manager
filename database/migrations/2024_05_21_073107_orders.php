@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('orderDate');
             $table->date('receiverDate');
-            $table->enum('status', ['shipping', 'delivered', 'cancelled'])->default('pending');
+            $table->enum('status', ['shipping', 'delivered', 'cancelled']);
             $table->integer('amount');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
