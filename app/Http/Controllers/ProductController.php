@@ -7,17 +7,17 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        $products = Product::all();
-        return view('products.index', compact('products'));
-    }
+    // public function index()
+    // {
+    //     $products = Product::all();
+    //     return view('products.index', compact('products'));
+    // }
 
-    public function show($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('products.show', compact('product'));
-    }
+    // public function show($id)
+    // {
+    //     $product = Product::findOrFail($id);
+    //     return view('products.show', compact('product'));
+    // }
 
     public function create()
     {
@@ -38,33 +38,33 @@ class ProductController extends Controller
             ->with('success', 'Product created successfully.');
     }
 
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
-    }
+    // public function edit($id)
+    // {
+    //     $product = Product::findOrFail($id);
+    //     return view('products.edit', compact('product'));
+    // }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'amount' => 'required|integer',
-        ]);
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'description' => 'required|string|max:255',
+    //         'amount' => 'required|integer',
+    //     ]);
 
-        $product = Product::findOrFail($id);
-        $product->update($request->all());
+    //     $product = Product::findOrFail($id);
+    //     $product->update($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully.');
-    }
+    //     return redirect()->route('products.index')
+    //         ->with('success', 'Product updated successfully.');
+    // }
 
-    public function destroy($id)
-    {
-        $product = Product::findOrFail($id);
-        $product->delete();
+    // public function destroy($id)
+    // {
+    //     $product = Product::findOrFail($id);
+    //     $product->delete();
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully.');
-    }
+    //     return redirect()->route('products.index')
+    //         ->with('success', 'Product deleted successfully.');
+    // }
 }

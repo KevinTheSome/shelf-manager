@@ -21,19 +21,22 @@ Route::group(['middleware' => 'guest'], function () {
  
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
-
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/orders',[OrdersController::class, 'orders'])->name('orders');
-    Route::get('/report',[ReportController::class, 'report'])->name('report');
-    //7 restul aciones for products
-    Route::get('/products/index', [ProductController::class, 'index']);
-    Route::get('/products/{id}', [ProductController::class, 'show']);
-    Route::get('/products/create', [ProductController::class, 'create']);
-    Route::get('/products/new', [ProductController::class, 'new']);
-    Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
-    Route::put('/products/{id]', [ProductController::class, 'update']);
-    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
+    //reports
+    Route::get('/report',[ReportController::class, 'report'])->name('report');
+
+    //7 restul aciones for products
+    // Route::get('/products/index', [ProductController::class, 'index']);
+    // Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::get('/products/create', [ProductController::class, 'create']);
+    Route::post('/products/store', [ProductController::class, 'store']);
+    // Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
+    // Route::put('/products/{id]', [ProductController::class, 'update']);
+    // Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+
+    //orders
+    Route::get('/orders',[OrdersController::class, 'orders'])->name('orders');
     Route::get('/orders/new', [OrdersController::class, 'new']);
     Route::post('/orders/create', [OrdersController::class, 'create']);
 });
