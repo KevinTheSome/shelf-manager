@@ -11,7 +11,7 @@ class OrdersController extends Controller
 {
     public function orders()
     {
-        return view('orders.orders' , ['products' => Product::all()]);
+        return view('orders.orders' , ['products' => Product::all() , 'orders'=>Order::all()]);
     }
 
     public function store(Request $request)

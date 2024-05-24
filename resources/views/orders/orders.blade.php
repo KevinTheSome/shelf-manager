@@ -39,6 +39,15 @@
                     </div>
                 @endif
             </form>
+
+            @foreach ($orders as $order)
+                <div class="flex gap-2">
+                    <p>{{ $order->status }}</p>
+                    <p>{{ $order->amount }}</p>
+                    <p>{{ $order->orderDate }}</p>
+                    <p>{{ $order->receiverDate }}</p>
+                </div>
+            @endforeach
         
     </section>
 
