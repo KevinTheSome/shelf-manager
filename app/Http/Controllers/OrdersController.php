@@ -7,9 +7,9 @@ use App\Models\Order;
 
 class OrdersController extends Controller
 {
-    public function index()
+    public function orders()
     {
-        return view('orders.index');
+        return view('orders.orders');
     }
 
     public function new()

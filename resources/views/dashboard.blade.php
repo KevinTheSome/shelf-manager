@@ -24,7 +24,7 @@
                             <a href='' class="text-gray-700 dark:text-gray-400">Create a Report</a>
                         </div>
 
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>

@@ -23,8 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/orders',[OrdersController::class, 'index'])->name('orders');
-    Route::get('/report',[ReportController::class, 'index'])->name('report');
+    Route::get('/orders',[OrdersController::class, 'orders'])->name('orders');
+    Route::get('/report',[ReportController::class, 'report'])->name('report');
     //7 restul aciones for products
     Route::get('/product/index', [ProductController::class, 'index']);
     Route::get('/product/{id}', [ProductController::class, 'show']);
