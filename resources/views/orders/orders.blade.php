@@ -1,13 +1,12 @@
 <x-layout title="Orders">
     <x-navbar></x-navbar>
     <section class="grid justify-center content-center">
-        <h1>Orders</h1>
-        <div class="grid grid-rows-1">
-            <form action="/orders/store" mathod="POST">
+            <form method="POST" action="/orders/store" class="grid grid-cols-1 gap-2 p-4 bg-gray-100">
                 @csrf
+
                 <label>
                     Amount:
-                    <input type="number" name="Amount" id="Amount">
+                    <input type="number" name="amount" placeholder="1-99" id="amount">
                 </label>
 
                 <label>
@@ -27,18 +26,19 @@
                         <option value="cancelled">cancelled</option>
                     </select>
                 </label>
+                
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">make a order</button>
 
-                <label>
-                    Amount:
-                    <input type="text" name="" id="">
-                </label>
-                
-                
-
-                
-                <button type="submit">make a order</button>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-red-500">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </form>
-        </div>
         
     </section>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
@@ -17,21 +18,20 @@ class OrdersController extends Controller
     {
 
         $request->validate([
-            'orderDate' => 'required|date',
-            'receiverDate' => 'required|date',
             'status' => 'required',
-            'amount' => 'required',
-            'user_id' => 'required',    
+            'amount' => 'required|integer',
             'product_id' => 'required',
         ]);
 
         $order = new Order();
-        $order->order_date = date('Y-m-d H:i:s');
-        $order->receiver_date = $request->receiverDate;
+        $order->orderDate = date('Y-m-d H:i:s');
+        $order->receiverDate = $request->receiverDate;
         $order->status = $request->status;
         $order->amount = $request->amount;
-        $order->user_id = $request->user_id;
+        $order->user_id = Auth::user()->id;
         $order->product_id = $request->product_id;
         $order->save();
+
+        return redirect('/orders');
     }
 }
