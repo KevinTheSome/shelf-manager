@@ -3,7 +3,7 @@
     <section class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold text-center mb-8">Products List</h1>
         <div class="text-center mb-4">
-            <a href="products/create" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Create New Product</a>
+        <a href="/products/create" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Create New Product</a>
         </div>
         @if (session('success'))
             <div class="bg-green-500 text-white p-4 rounded mb-4">
