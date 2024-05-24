@@ -26,13 +26,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders',[OrdersController::class, 'orders'])->name('orders');
     Route::get('/report',[ReportController::class, 'report'])->name('report');
     //7 restul aciones for products
-    Route::get('/product/index', [ProductController::class, 'index']);
-    Route::get('/product/{id}', [ProductController::class, 'show']);
-    Route::get('/product/create', [ProductController::class, 'create']);
-    Route::get('/product/new', [ProductController::class, 'new']);
-    Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
-    Route::put('/product/{id]', [ProductController::class, 'update']);
-    Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+    Route::get('/products/index', [ProductController::class, 'index']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::get('/products/create', [ProductController::class, 'create']);
+    Route::get('/products/new', [ProductController::class, 'new']);
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
+    Route::put('/products/{id]', [ProductController::class, 'update']);
+    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
     Route::get('/orders/new', [OrdersController::class, 'new']);
     Route::post('/orders/create', [OrdersController::class, 'create']);

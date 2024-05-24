@@ -1,7 +1,7 @@
 <x-layout title="dashboard">
 <x-navbar></x-navbar>
     <h1>Create Product</h1>
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('products.new') }}" method="POST">
         @csrf
         <div>
             <label for="name">Name</label>
