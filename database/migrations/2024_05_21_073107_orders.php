@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->date('orderDate');
-            $table->date('receiverDate');
+            $table->date('receiverDate')->nullable();
             $table->enum('status', ['shipping', 'delivered', 'cancelled']);
             $table->integer('amount');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');

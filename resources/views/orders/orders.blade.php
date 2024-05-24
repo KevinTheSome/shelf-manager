@@ -3,7 +3,7 @@
     <section class="grid justify-center content-center">
         <h1>Orders</h1>
         <div class="grid grid-rows-1">
-            <form mathod="POST">
+            <form action="/orders/store" mathod="POST">
                 @csrf
                 <label>
                     Amount:
