@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/report',[ReportController::class, 'report'])->name('report');
 
     //7 restul aciones for products
-    // Route::get('/products/index', [ProductController::class, 'index']);
+    Route::get('/products/index', [ProductController::class, 'index']);
     // Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::get('/products/create', [ProductController::class, 'create']);
     Route::post('/products/store', [ProductController::class, 'store']);
