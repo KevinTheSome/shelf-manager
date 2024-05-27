@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // shelf
     Route::get('/shelf/index', [ShelfController::class, 'index']);
+    Route::post('/shelf/store', [ShelfController::class, 'store']);
     Route::get('/shelf/create', [ShelfController::class, 'create']);
     Route::post('/shelf/{id}/edit', [ShelfController::class, 'edit']);
     Route::delete('/shelf/{id}/delete', [ShelfController::class, 'delete']);

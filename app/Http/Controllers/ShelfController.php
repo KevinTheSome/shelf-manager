@@ -13,23 +13,19 @@ class ShelfController extends Controller
     }
 
     public function create() {
-        return view('shelves.create');
+        return view('shelf.create');
     }
 
     public function store(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'amount' => 'required|integer',
         ]);
 
         $shelf = new Shelf();
         $shelf->name = $request->name;
-        $shelf->description = $request->description;
-        $shelf->amount = $request->amount;
         $shelf->save();
 
-        return redirect()->route('shelves.index')->with('success', 'Shelf created successfully.');
+        return redirect('/shelf/index');
     }
 
     public function edit($id) {
@@ -40,23 +36,22 @@ class ShelfController extends Controller
     public function update(Request $request, $id) {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'amount' => 'required|integer',
         ]);
+
+        
 
         $shelf = Shelf::findOrFail($id);
         $shelf->name = $request->name;
-        $shelf->description = $request->description;
-        $shelf->amount = $request->amount;
         $shelf->save();
 
         return redirect()->route('shelves.index')->with('success', 'Shelf updated successfully.');
     }
 
-    public function destroy($id) {
+    public function delete($id)
+    {
         $shelf = Shelf::findOrFail($id);
         $shelf->delete();
 
-        return redirect()->route('shelves.index')->with('success', 'Shelf deleted successfully.');
+        return redirect('/shelf/index');
     }
 }
