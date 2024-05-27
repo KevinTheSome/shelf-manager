@@ -27,14 +27,14 @@
                             <h3 class="text-lg font-semibold mb-3">
                             <a href="/report" class="p-4 text-yellow-900 hover:text-blue-500 transition">Reports</a>
                             </h3>
-                            <a href='reports/create' class="text-yellow-700 text-yellow-400">Create a Report</a>
+                            
                         </div>
 
                         <div class="bg-yellow-100 p-5 rounded-lg shadow">
                             <h3 class="text-lg font-semibold mb-3">
                             <a href="/admin" class="p-4 text-yellow-900 hover:text-blue-500 transition">Admin</a>
                             </h3>
-                            <a href='/admin/manage' class="text-yellow-700 text-yellow-400">Manage Users</a>
+                            <a href='/admin/users' class="text-yellow-700 text-yellow-400">Manage Users</a>
                         </div>
 
                     </div>
