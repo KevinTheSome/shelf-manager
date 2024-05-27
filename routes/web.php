@@ -7,6 +7,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShelfController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,4 +49,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/users', [OrdersController::class, 'store']);
     Route::post('/admin/{id}/edit', [OrdersController::class, 'edit']);
     Route::delete('/admin/{id}/delete', [OrdersController::class, 'delete']);
+
+    // shelf
+    Route::get('/shelf/index', [ShelfController::class, 'index']);
+    Route::get('/shelf/create', [ShelfController::class, 'create']);
+    Route::post('/shelf/{id}/edit', [ShelfController::class, 'edit']);
+    Route::delete('/shelf/{id}/delete', [ShelfController::class, 'delete']);
 });
