@@ -14,6 +14,11 @@ class OrdersController extends Controller
         return view('orders.orders' , ['products' => Product::all() , 'orders'=>Order::all()]);
     }
 
+    public function create()
+    {
+        return view('orders.create' , ['products' => Product::all()]);
+    }
+
     public function store(Request $request)
     {
 
@@ -34,4 +39,5 @@ class OrdersController extends Controller
 
         return redirect('/orders');
     }
+
 }
