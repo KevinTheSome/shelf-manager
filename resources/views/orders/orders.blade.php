@@ -48,7 +48,6 @@
                     <p>{{ $order->receiverDate }}</p>
                 </div>
             @endforeach
-        
     </section>
 
 </x-layout>

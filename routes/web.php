@@ -13,18 +13,18 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/register',[AuthController::class, 'register'])->name('register');
-    Route::post('/registerUser',[AuthController::class, 'registerUser'])->name('registerUser');
-    Route::get('/login',[AuthController::class, 'login'])->name('login');
-    Route::post('/loginUser',[AuthController::class, 'loginUser'])->name('loginUser');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/registerUser', [AuthController::class, 'registerUser'])->name('registerUser');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/loginUser', [AuthController::class, 'loginUser'])->name('loginUser');
 });
- 
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
-    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     //reports
-    Route::get('/report',[ReportController::class, 'report'])->name('report');
+    Route::get('/report', [ReportController::class, 'report'])->name('report');
 
     //7 restul aciones for products
     Route::get('/products/index', [ProductController::class, 'index']);
@@ -36,9 +36,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
     //orders
-    Route::get('/orders',[OrdersController::class, 'orders'])->name('orders');
+    Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
     Route::post('/orders/store', [OrdersController::class, 'store']);
     Route::post('/orders/{id}/edit', [OrdersController::class, 'edit']);
     Route::post('/orders/{id}/update', [OrdersController::class, 'update']);
     Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete']);
+
+    //admin
+    Route::get('/admin', [OrdersController::class, 'admin'])->name('admin');
+    Route::get('/admin/users', [OrdersController::class, 'store']);
+    Route::post('/admin/{id}/edit', [OrdersController::class, 'edit']);
+    Route::delete('/admin/{id}/delete', [OrdersController::class, 'delete']);
 });
