@@ -22,22 +22,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $product)
-                        <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->id }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->name }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->description }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->amount }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <a href="products/edit, $product->id)" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                <form action="products.destroy, $product->id)" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                @foreach($products as $product)
+    <tr>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->id }}</td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->name }}</td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->description }}</td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $product->amount }}</td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+            <a href="{{ url('products/' . $product->id . '/edit') }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+            <form action="{{ url('products/' . $product->id) }}" method="POST" class="inline-block">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+            </form>
+        </td>
+    </tr>
+@endforeach
+
                 </tbody>
             </table>
         </div>

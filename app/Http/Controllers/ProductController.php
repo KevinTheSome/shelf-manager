@@ -48,19 +48,19 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'amount' => 'required|integer',
+            'product_id' => 'required|integer',
         ]);
 
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail($request->product_id);
         $product->update($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully.');
+        return redirect('/products/index');
     }
 
     public function destroy($id)
@@ -68,7 +68,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully.');
+        return redirect('/products/index');
     }
 }
