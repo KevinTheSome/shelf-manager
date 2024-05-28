@@ -40,8 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
     Route::get('/orders/create', [OrdersController::class, 'create'])->name('create');
     Route::post('/orders/store', [OrdersController::class, 'store']);
-    Route::post('/orders/{id}/edit', [OrdersController::class, 'edit']);
-    Route::post('/orders/{id}/update', [OrdersController::class, 'update']);
+    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit']);
+    Route::put('/orders/{id}/update', [OrdersController::class, 'update']);
     Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete']);
 
     //admin
@@ -56,4 +56,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/shelf/create', [ShelfController::class, 'create']);
     Route::post('/shelf/{id}/edit', [ShelfController::class, 'edit']);
     Route::delete('/shelf/{id}/delete', [ShelfController::class, 'delete']);
+    Route::post('/shelf/{id}/recive', [ShelfController::class, 'recive']);
 });
