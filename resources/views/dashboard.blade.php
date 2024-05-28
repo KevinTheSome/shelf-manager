@@ -7,7 +7,7 @@
                     <h1 class="text-center text-4xl font-bold leading-tight tracking-tight text-yellow-900 text-white mb-6">
                         Welcome to your Dashboard!
                     </h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         
                         <div class="bg-yellow-100 p-5 rounded-lg shadow">
                             <h3 class="text-lg font-semibold mb-3">
@@ -35,6 +35,20 @@
                             <a href="/admin" class="p-4 text-yellow-900 hover:text-blue-500 transition">Admin</a>
                             </h3>
                             <a href='/admin/users' class="text-yellow-700 text-yellow-400">Manage Users</a>
+                        </div>
+
+                        <div class="bg-yellow-100 p-5 rounded-lg shadow">
+                            <h3 class="text-lg font-semibold mb-3">
+                            <a href="/shelf/index" class="p-4 text-yellow-900 hover:text-blue-500 transition">Shelves</a>
+                            </h3>
+                            <a href='/shelf/create' class="text-yellow-700 text-yellow-400">Add a Shelves</a>
+                        </div>
+
+                        <div class="bg-yellow-100 p-5 rounded-lg shadow">
+                            <h3 class="text-lg font-semibold mb-3">
+                            <a href="/admin" class="p-4 text-yellow-900 hover:text-blue-500 transition">Shelves Storage</a>
+                            </h3>
+                            <a href='/admin/users' class="text-yellow-700 text-yellow-400">Manage Products in what shelf</a>
                         </div>
 
                     </div>
