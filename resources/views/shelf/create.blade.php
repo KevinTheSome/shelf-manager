@@ -1,4 +1,4 @@
-<x-layout title="Shelf Create">
+<x-layout title="dashboard">
     <x-navbar></x-navbar>
     <section class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold text-center mb-8">Create Shelf</h1>

@@ -8,6 +8,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShelfController;
+use App\Http\Controllers\ShelfStorageController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,8 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
     Route::get('/orders/create', [OrdersController::class, 'create'])->name('create');
     Route::post('/orders/store', [OrdersController::class, 'store']);
-    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit']);
-    Route::put('/orders/{id}/update', [OrdersController::class, 'update']);
+    Route::post('/orders/{id}/edit', [OrdersController::class, 'edit']);
+    Route::post('/orders/{id}/update', [OrdersController::class, 'update']);
     Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete']);
 
     //admin
@@ -57,5 +59,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/shelf/{id]', [ShelfController::class, 'update'])->name('shelves.update');
     Route::get('/shelf/{id}/edit', [ShelfController::class, 'edit']);
     Route::delete('/shelf/{id}/delete', [ShelfController::class, 'delete']);
-    Route::post('/shelf/{id}/recive', [ShelfController::class, 'recive']);
+
+    // shelf storage
+    Route::get('/shelf_storage/index', [ShelfStorageController::class, 'index']);
+    Route::post('/shelf_storage/store', [ShelfStorageController::class, 'create'])->name('shelf_storage.store');
+    Route::get('/shelf_storage/{id}/edit', [ShelfStorageController::class, 'edit'])->name('shelf_storage.edit');
+    Route::put('/shelf_storage/{id}', [ShelfStorageController::class, 'update'])->name('shelf_storage.update');
+    Route::delete('/shelf_storage/{id}/delete', [ShelfStorageController::class, 'delete'])->name('shelf_storage.delete');
+    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create'])->name('shelf_storage.create');
+    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create'])->name('shelf_storage.create');
 });
