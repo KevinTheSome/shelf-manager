@@ -6,7 +6,7 @@
         <a href="/products/create" class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-900">Create a New Product</a>
         </div>
         @if (session('success'))
-            <div class="bg-green-500 text-white p-4 rounded mb-4">
+            <div class="bg-yellow-500 text-white p-4 rounded mb-4">
                 {{ session('success') }}
             </div>
         @endif

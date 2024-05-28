@@ -1,8 +1,8 @@
 <x-layout title="Orders">
     <x-navbar></x-navbar>
     <section class="grid justify-center content-center">
-        <h1 class="text-3xl font-bold text-center mb-8 mt-8">Orders</h1>
-        <a href="/orders/create" class="text-center inline-block bg-blue-500 text-white py-2 px-4 mt-6 mb-6 rounded hover:bg-blue-600">Make New Order</a>
+        <h1 class="text-yellow-900 text-3xl font-bold text-center mb-8 mt-8">Orders</h1>
+        <a href="/orders/create" class="text-center inline-block bg-yellow-500 text-white py-2 px-4 mt-6 mb-6 rounded hover:bg-yellow-900">Make a New Order</a>
 
         <div class="bg-white shadow-md rounded overflow-hidden">
             <table class="min-w-full leading-normal">
