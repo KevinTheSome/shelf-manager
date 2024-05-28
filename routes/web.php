@@ -62,10 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // shelf storage
     Route::get('/shelf_storage/index', [ShelfStorageController::class, 'index']);
-    Route::post('/shelf_storage/store', [ShelfStorageController::class, 'create'])->name('shelf_storage.store');
+    Route::post('/shelf_storage/new', [ShelfStorageController::class, 'new']);
     Route::get('/shelf_storage/{id}/edit', [ShelfStorageController::class, 'edit'])->name('shelf_storage.edit');
     Route::put('/shelf_storage/{id}', [ShelfStorageController::class, 'update'])->name('shelf_storage.update');
     Route::delete('/shelf_storage/{id}/delete', [ShelfStorageController::class, 'delete'])->name('shelf_storage.delete');
-    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create'])->name('shelf_storage.create');
-    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create'])->name('shelf_storage.create');
+    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create']);
 });

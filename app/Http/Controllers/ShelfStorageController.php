@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShelfStorage;
+use App\Models\Product;
+use App\Models\Shelf;
 
 class ShelfStorageController extends Controller
 {
     // Method to create a new ShelfStorage record
-    public function create(Request $request) {
+    public function new(Request $request) {
         $request->validate([
             'product_id' => 'required|integer|exists:products,id',
             'shelf_id' => 'required|integer|exists:shelves,id',  // Fixed table names and added id column check
@@ -19,7 +21,11 @@ class ShelfStorageController extends Controller
         $shelfStorage->shelf_id = $request->shelf_id;
         $shelfStorage->save();
 
-        return redirect()->route('shelf_storage.index')->with('success', 'Shelf Storage created successfully.');
+        return redirect('/ShelfStorage/index');
+    }
+
+    public function create() {
+        return view('shelfStorage.create', ['products' => Product::all(), 'shelves' => Shelf::all()]);
     }
 
     // Method to display the form for editing a ShelfStorage record
