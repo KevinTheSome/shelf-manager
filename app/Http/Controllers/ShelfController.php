@@ -25,26 +25,28 @@ class ShelfController extends Controller
         $shelf->name = $request->name;
         $shelf->save();
 
-        return redirect('/shelf/index');
+        return redirect()->intended('shelf/index')
+            ->with('success', 'Shelf created successfully.');
     }
 
     public function edit($id) {
         $shelf = Shelf::findOrFail($id);
-        return view('shelves.edit', compact('shelf'));
+        return view('shelf.edit', compact('shelf'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
         
 
-        $shelf = Shelf::findOrFail($id);
+        $shelf = Shelf::findOrFail($request->shelf_id);
         $shelf->name = $request->name;
         $shelf->save();
 
-        return redirect()->route('shelves.index')->with('success', 'Shelf updated successfully.');
+        return redirect()->intended('shelf/index')
+            ->with('success', 'Shelf updated successfully!');
     }
 
     public function delete($id)
