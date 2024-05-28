@@ -1,12 +1,12 @@
 <x-layout title="dashboard">
     <x-navbar></x-navbar>
     <section class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8">Shelves List</h1>
+        <h1 class="text-yellow-900 text-3xl font-bold text-center mb-8">Shelves List</h1>
         <div class="text-center mb-4">
-            <a href="/shelf/create" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Create New Shelf</a>
+            <a href="/shelf/create" class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-900">Create a New Shelf</a>
         </div>
         @if (session('success'))
-            <div class="bg-green-500 text-white p-4 rounded mb-4">
+            <div class="bg-yellow-500 text-white p-4 rounded mb-4">
                 {{ session('success') }}
             </div>
         @endif
@@ -14,17 +14,17 @@
             <table class="min-w-full leading-normal">
                 <thead>
                     <tr>
-                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">ID</th>
-                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Name</th>
-                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+                        <th class="px-5 py-3 border-b-2 border-yellow-900 bg-yellow-600 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">ID</th>
+                        <th class="px-5 py-3 border-b-2 border-yellow-900 bg-yellow-600 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Name</th>
+                        <th class="px-5 py-3 border-b-2 border-yellow-900 bg-yellow-600 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($shelves as $shelf)
                         <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $shelf->id }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $shelf->name }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <td class="px-5 py-5 border-b border-yellow-400 bg-yellow-100 text-sm">{{ $shelf->id }}</td>
+                            <td class="px-5 py-5 border-b border-yellow-400 bg-yellow-100 text-sm">{{ $shelf->name }}</td>
+                            <td class="px-5 py-5 border-b border-yellow-400 bg-yellow-100 text-sm">
                                 <a href="{{ url('shelf/' . $shelf->id . '/edit') }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 <form action="{{ url('shelf/' . $shelf->id . '/delete') }}" method="POST" class="inline-block">
                                     @csrf

@@ -14,21 +14,21 @@
             <table class="min-w-full leading-normal">
                 <thead>
                     <tr>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">ID</th>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Name</th>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Description</th>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Amount</th>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Actions</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">ID</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Name</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Description</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Amount</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($products as $product)
     <tr>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $product->id }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $product->name }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $product->description }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $product->amount }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">
+        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->id }}</td>
+        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->name }}</td>
+        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->description }}</td>
+        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->amount }}</td>
+        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">
             <a href="{{ url('products/' . $product->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
             <form action="{{ url('products/' . $product->id) }}" method="POST" class="inline-block">
                 @csrf
