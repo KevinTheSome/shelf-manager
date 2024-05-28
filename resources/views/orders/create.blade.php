@@ -1,15 +1,15 @@
 <x-layout title="Orders">
     <x-navbar></x-navbar>
     <section class="grid justify-center content-center">
-            <form method="POST" action="/orders/store" class="grid grid-cols-1 gap-2 p-4 bg-gray-100">
+            <form method="POST" action="/orders/store" class="grid grid-cols-1 gap-2 p-4 bg-yellow-600">
                 @csrf
 
-                <label>
+                <label class="text-yellow-900">
                     Amount:
                     <input type="number" name="amount" placeholder="1-99" id="amount">
                 </label>
 
-                <label>
+                <label  class="text-yellow-900">
                     Products:
                     <select name="product_id" id="product_id">
                         @foreach ($products as $product)
@@ -18,7 +18,7 @@
                     </select>
                 </label>
 
-                <label>
+                <label class="text-yellow-900">
                     Status:
                     <select name="status" id="status">
                         <option value="shipping">shipping</option>
@@ -27,7 +27,7 @@
                     </select>
                 </label>
                 
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">make a order</button>
+                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-900">make an order</button>
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
