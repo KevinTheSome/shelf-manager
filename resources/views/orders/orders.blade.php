@@ -12,6 +12,7 @@
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Recive Date</th>
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Status</th>
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Amount</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Product</th>
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
@@ -22,9 +23,14 @@
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $order->receiverDate }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $order->status }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $order->amount }}</td>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $order->product}}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">
                             <a href="{{ url('orders/' . $order->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
-                            <a href="{{ url('orders/' . $order->id . '/recived') }}" class="bg-yellow-100 text-yellow-600 hover:text-yellow-900">Recived</a>
+                            <form action="{{ url('orders/delivered') }}" method="POST" class="inline-block">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $order->id }}">
+                                <button type="submit" class="text-yellow-600 hover:text-yellow-900 ml-2">Recived</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

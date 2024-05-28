@@ -42,9 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
     Route::get('/orders/create', [OrdersController::class, 'create'])->name('create');
     Route::post('/orders/store', [OrdersController::class, 'store']);
-    Route::post('/orders/{id}/edit', [OrdersController::class, 'edit']);
-    Route::post('/orders/{id}/update', [OrdersController::class, 'update']);
+    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit']);
+    Route::put('/orders/update', [OrdersController::class, 'update']);
     Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete']);
+    Route::post('orders/delivered', [OrdersController::class, 'delivered']);
 
     //admin
     Route::get('/admin', [OrdersController::class, 'admin'])->name('admin');

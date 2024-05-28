@@ -19,26 +19,42 @@ class OrdersController extends Controller
         return view('orders.create' , ['products' => Product::all()]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('orders.edit');
+        return view('orders.edit' , ['order' => Order::find($id)]);
+    }
+
+    public function delivered(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer',
+        ]);
+
+        $id = $request->id;
+
+        $order = Order::find($id);
+        $order->status = 'delivered';
+        $order->receiverDate = date('Y-m-d H:i:s');
+        $order->save();
+
+        return redirect('/orders');
     }
 
     public function update(Request $request)
     {
         $request->validate([
             'status' => 'required|in:shipping,delivered,cancelled',
-            'amount' => 'required|integer',
-            'product_id' => 'required',
         ]);
 
-        $order = new Order();
-        $order->orderDate = date('Y-m-d H:i:s');
-        $order->receiverDate = $request->receiverDate;
+        $order = Order::find($request->id);
+        if($request->status == 'delivered') {
+            
+            $order->status = $request->status;
+            $order->receiverDate = date('Y-m-d H:i:s');
+            $order->save();
+        }
+
         $order->status = $request->status;
-        $order->amount = $request->amount;
-        $order->user_id = Auth::user()->id;
-        $order->product_id = $request->product_id;
         $order->save();
 
         return redirect('/orders');
