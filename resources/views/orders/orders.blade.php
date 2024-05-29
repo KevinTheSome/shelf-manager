@@ -25,7 +25,7 @@
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $order->amount }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $order->product}}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">
-                            <a href="{{ url('orders/' . $order->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="{{ url('orders/' . $order->id . '/edit') }}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-900">Edit</a>
                             <form action="{{ url('orders/delivered') }}" method="POST" class="inline-block">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $order->id }}">

@@ -1,7 +1,7 @@
 <x-layout title="dashboard">
     <x-navbar></x-navbar>
     <section class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8 text-yellow-900">Products List</h1>
+        <h1 class="text-4xl font-bold text-center mb-8 text-yellow-900">Products List</h1>
         <div class="text-center mb-4">
         <a href="/products/create" class="inline-block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-900">Create a New Product</a>
         </div>
@@ -29,7 +29,7 @@
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->description }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->amount }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">
-                            <a href="{{ url('products/' . $product->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="{{ url('products/' . $product->id . '/edit') }}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-900">Edit</a>
                             <form action="{{ url('products/' . $product->id) }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')

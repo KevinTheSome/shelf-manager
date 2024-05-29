@@ -10,7 +10,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="bg-white shadow-md rounded overflow-hidden">
+        <div class="bg-yellow-100 shadow-md rounded overflow-hidden">
             <table class="min-w-full leading-normal">
                 <thead>
                     <tr>
@@ -22,14 +22,14 @@
                 <tbody>
                     @foreach($shelves as $shelf)
                         <tr>
-                            <td class="px-5 py-5 border-b border-yellow-400 bg-yellow-100 text-sm">{{ $shelf->id }}</td>
-                            <td class="px-5 py-5 border-b border-yellow-400 bg-yellow-100 text-sm">{{ $shelf->name }}</td>
-                            <td class="px-5 py-5 border-b border-yellow-400 bg-yellow-100 text-sm">
-                                <a href="{{ url('shelf/' . $shelf->id . '/edit') }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $shelf->id }}</td>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $shelf->name }}</td>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">
+                                <a href="{{ url('shelf/' . $shelf->id . '/edit') }}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-900">Edit</a>
                                 <form action="{{ url('shelf/' . $shelf->id . '/delete') }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                                    <button type="submit" class="text-red-500 hover:text-red-900 text-white- py-1 px-3 rounded">Delete</button>
                                 </form>
                             </td>
                         </tr>

@@ -1,9 +1,9 @@
 <x-layout title="Admin">
     <x-navbar></x-navbar>
     <section class="grid justify-center content-center">
-        <div class="bg-white shadow-md rounded overflow-hidden">
-            <h1 class="text-yellow-900 text-3xl font-bold text-center mt-8 mb-8">Users management</h1>
-            <table class="min-w-full leading-normal">
+        <div class=" rounded overflow-hidden">
+            <h1 class="text-yellow-900 text-4xl font-bold text-center mt-8 mb-8">Users management</h1>
+            <table class="bg-white shadow-md rounded overflow-hidden">
                 <thead>
                     <tr>
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">ID</th>
