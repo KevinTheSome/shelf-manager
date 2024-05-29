@@ -23,8 +23,8 @@
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $user->email }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $user->created_at }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">
-                        <a href="{{ url('products/' . $user->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
-                            <form action="{{ url('products/' . $user->id) }}" method="POST" class="inline-block">
+                        <a href="{{ url('admin/users/' . $user->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <form action="{{ url('admin/users/' . $user->id . '/delete') }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>

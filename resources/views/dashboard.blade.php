@@ -33,7 +33,7 @@
                                 <h3 class="text-lg font-semibold mb-3">
                                 <a href="/report" class="p-4 text-yellow-900 hover:text-yellow-400 transition">Reports</a>
                                 </h3>
-                                
+                                <a class="text-yellow-700 text-yellow-400">See all your Reports</a>
                             </div>
                         @endif
 
@@ -51,7 +51,7 @@
                                 <h3 class="text-lg font-semibold mb-3">
                                 <a href="/shelf/index" class="p-4 text-yellow-900 hover:text-yellow-400 transition">Shelves</a>
                                 </h3>
-                                <a href='/shelf/create' class="text-yellow-700 text-yellow-400">Add a Shelves</a>
+                                <a href='/shelf/create' class="text-yellow-700 text-yellow-400">Add a Shelf</a>
                             </div>
                         @endif
 
@@ -60,7 +60,7 @@
                                 <h3 class="text-lg font-semibold mb-3">
                                 <a href="/shelf_storage/index" class="p-4 text-yellow-900 hover:text-yellow-400 transition">Shelves Storage</a>
                                 </h3>
-                                <a href='/shelf_storage/create' class="text-yellow-700 text-yellow-400">Add product to Shelves</a>
+                                <a href='/shelf_storage/create' class="text-yellow-700 text-yellow-400">Manage products in Shelves</a>
                             </div>
                         @endif
 
