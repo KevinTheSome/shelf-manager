@@ -21,7 +21,7 @@ class ShelfStorageController extends Controller
         $shelfStorage->shelf_id = $request->shelf_id;
         $shelfStorage->save();
 
-        return redirect('/ShelfStorage/index');
+        return redirect('/shelf_storage/index');
     }
 
     public function create() {
