@@ -23,21 +23,21 @@
                 </thead>
                 <tbody>
                 @foreach($products as $product)
-    <tr>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->id }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->name }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->description }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->amount }}</td>
-        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">
-            <a href="{{ url('products/' . $product->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
-            <form action="{{ url('products/' . $product->id) }}" method="POST" class="inline-block">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
-            </form>
-        </td>
-    </tr>
-@endforeach
+                    <tr>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->id }}</td>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->name }}</td>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->description }}</td>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $product->amount }}</td>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">
+                            <a href="{{ url('products/' . $product->id . '/edit') }}" class="bg-yellow-100 text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <form action="{{ url('products/' . $product->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
                 </tbody>
             </table>

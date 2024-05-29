@@ -53,9 +53,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     //admin
     Route::get('/admin', [AdminController::class, 'admin'])->middleware(AdminMiddleware::class);
-    Route::get('/admin/users', [AdminController::class, 'store'])->middleware(AdminMiddleware::class);
-    Route::post('/admin/{id}/edit', [AdminController::class, 'edit'])->middleware(AdminMiddleware::class);
-    Route::delete('/admin/{id}/delete', [AdminController::class, 'delete'])->middleware(AdminMiddleware::class);
+    Route::get('/admin/users', [AdminController::class, 'users'])->middleware(AdminMiddleware::class);
+    Route::get('/admin/users/{id}/edit', [AdminController::class, 'users'])->middleware(AdminMiddleware::class);
+    Route::post('/admin/users/{id}', [AdminController::class, 'users'])->middleware(AdminMiddleware::class);
+    Route::delete('/admin/users/{id}/delete', [AdminController::class, 'delete'])->middleware(AdminMiddleware::class);
 
     // shelf
     Route::get('/shelf/index', [ShelfController::class, 'index'])->middleware(StockerMiddleware::class);
