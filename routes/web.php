@@ -43,13 +43,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->middleware(AccountantMiddleware::class);
 
     //orders
-    Route::get('/orders', [OrdersController::class, 'orders'])->name('orders')->middleware(StockerMiddleware::class);
-    Route::get('/orders/create', [OrdersController::class, 'create'])->name('create')->middleware(StockerMiddleware::class);
-    Route::post('/orders/store', [OrdersController::class, 'store'])->middleware(StockerMiddleware::class);
-    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit'])->middleware(StockerMiddleware::class);
-    Route::put('/orders/update', [OrdersController::class, 'update'])->middleware(StockerMiddleware::class);
-    Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete'])->middleware(StockerMiddleware::class);
-    Route::post('orders/delivered', [OrdersController::class, 'delivered'])->middleware(StockerMiddleware::class);
+    Route::get('/orders', [OrdersController::class, 'orders'])->name('orders')->middleware(AccountantMiddleware::class);
+    Route::get('/orders/create', [OrdersController::class, 'create'])->name('create')->middleware(AccountantMiddleware::class);
+    Route::post('/orders/store', [OrdersController::class, 'store'])->middleware(AccountantMiddleware::class);
+    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit'])->middleware(AccountantMiddleware::class);
+    Route::put('/orders/update', [OrdersController::class, 'update'])->middleware(AccountantMiddleware::class);
+    Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete'])->middleware(AccountantMiddleware::class);
+    Route::post('orders/delivered', [OrdersController::class, 'delivered'])->middleware(AccountantMiddleware::class);
 
     //admin
     Route::get('/admin', [AdminController::class, 'admin'])->middleware(AdminMiddleware::class);
