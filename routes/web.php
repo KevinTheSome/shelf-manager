@@ -34,22 +34,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/report', [ReportController::class, 'report'])->name('report')->middleware(AccountantMiddleware::class);
 
     //7 restul aciones for products
-    Route::get('/products/index', [ProductController::class, 'index']);
-    // Route::get('/products/{id}', [ProductController::class, 'show']);
-    Route::get('/products/create', [ProductController::class, 'create']);
-    Route::post('/products/store', [ProductController::class, 'store']);
-    Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
-    Route::put('/products/{id]', [ProductController::class, 'update'])->name('products.update');
-    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+    Route::get('/products/index', [ProductController::class, 'index'])->middleware(AccountantMiddleware::class);
+    // Route::get('/products/{id}', [ProductController::class, 'show'])->middleware(AccountantMiddleware::class);
+    Route::get('/products/create', [ProductController::class, 'create'])->middleware(AccountantMiddleware::class);
+    Route::post('/products/store', [ProductController::class, 'store'])->middleware(AccountantMiddleware::class);
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->middleware(AccountantMiddleware::class);
+    Route::put('/products/{id]', [ProductController::class, 'update'])->name('products.update')->middleware(AccountantMiddleware::class);
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->middleware(AccountantMiddleware::class);
 
     //orders
-    Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
-    Route::get('/orders/create', [OrdersController::class, 'create'])->name('create');
-    Route::post('/orders/store', [OrdersController::class, 'store']);
-    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit']);
-    Route::put('/orders/update', [OrdersController::class, 'update']);
-    Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete']);
-    Route::post('orders/delivered', [OrdersController::class, 'delivered']);
+    Route::get('/orders', [OrdersController::class, 'orders'])->name('orders')->middleware(StockerMiddleware::class);
+    Route::get('/orders/create', [OrdersController::class, 'create'])->name('create')->middleware(StockerMiddleware::class);
+    Route::post('/orders/store', [OrdersController::class, 'store'])->middleware(StockerMiddleware::class);
+    Route::get('/orders/{id}/edit', [OrdersController::class, 'edit'])->middleware(StockerMiddleware::class);
+    Route::put('/orders/update', [OrdersController::class, 'update'])->middleware(StockerMiddleware::class);
+    Route::delete('/orders/{id}/delete', [OrdersController::class, 'delete'])->middleware(StockerMiddleware::class);
+    Route::post('orders/delivered', [OrdersController::class, 'delivered'])->middleware(StockerMiddleware::class);
 
     //admin
     Route::get('/admin', [AdminController::class, 'admin'])->middleware(AdminMiddleware::class);
