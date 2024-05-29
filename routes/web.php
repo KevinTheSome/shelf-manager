@@ -9,7 +9,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShelfController;
 use App\Http\Controllers\ShelfStorageController;
+use App\Http\Controllers\AdminController;
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\AccountantMiddleware;
+use App\Http\Middleware\StockerMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     //reports
-    Route::get('/report', [ReportController::class, 'report'])->name('report');
+    Route::get('/report', [ReportController::class, 'report'])->name('report')->middleware(AccountantMiddleware::class);
 
     //7 restul aciones for products
     Route::get('/products/index', [ProductController::class, 'index']);
@@ -48,24 +52,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('orders/delivered', [OrdersController::class, 'delivered']);
 
     //admin
-    Route::get('/admin', [OrdersController::class, 'admin'])->name('admin');
-    Route::get('/admin/users', [OrdersController::class, 'store']);
-    Route::post('/admin/{id}/edit', [OrdersController::class, 'edit']);
-    Route::delete('/admin/{id}/delete', [OrdersController::class, 'delete']);
+    Route::get('/admin', [AdminController::class, 'admin'])->middleware(AdminMiddleware::class);
+    Route::get('/admin/users', [AdminController::class, 'store'])->middleware(AdminMiddleware::class);
+    Route::post('/admin/{id}/edit', [AdminController::class, 'edit'])->middleware(AdminMiddleware::class);
+    Route::delete('/admin/{id}/delete', [AdminController::class, 'delete'])->middleware(AdminMiddleware::class);
 
     // shelf
-    Route::get('/shelf/index', [ShelfController::class, 'index']);
-    Route::post('/shelf/store', [ShelfController::class, 'store']);
-    Route::get('/shelf/create', [ShelfController::class, 'create']);
-    Route::put('/shelf/{id]', [ShelfController::class, 'update'])->name('shelves.update');
-    Route::get('/shelf/{id}/edit', [ShelfController::class, 'edit']);
-    Route::delete('/shelf/{id}/delete', [ShelfController::class, 'delete']);
+    Route::get('/shelf/index', [ShelfController::class, 'index'])->middleware(StockerMiddleware::class);
+    Route::post('/shelf/store', [ShelfController::class, 'store'])->middleware(StockerMiddleware::class);
+    Route::get('/shelf/create', [ShelfController::class, 'create'])->middleware(StockerMiddleware::class);
+    Route::put('/shelf/{id]', [ShelfController::class, 'update'])->name('shelves.update')->middleware(StockerMiddleware::class);
+    Route::get('/shelf/{id}/edit', [ShelfController::class, 'edit'])->middleware(StockerMiddleware::class);
+    Route::delete('/shelf/{id}/delete', [ShelfController::class, 'delete'])->middleware(StockerMiddleware::class);
 
     // shelf storage
-    Route::get('/shelf_storage/index', [ShelfStorageController::class, 'index']);
-    Route::post('/shelf_storage/new', [ShelfStorageController::class, 'new']);
-    Route::get('/shelf_storage/{id}/edit', [ShelfStorageController::class, 'edit'])->name('shelf_storage.edit');
-    Route::put('/shelf_storage/{id}', [ShelfStorageController::class, 'update'])->name('shelf_storage.update');
-    Route::delete('/shelf_storage/{id}/delete', [ShelfStorageController::class, 'delete'])->name('shelf_storage.delete');
-    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create']);
+    Route::get('/shelf_storage/index', [ShelfStorageController::class, 'index'])->middleware(StockerMiddleware::class);
+    Route::post('/shelf_storage/new', [ShelfStorageController::class, 'new'])->middleware(StockerMiddleware::class);
+    Route::get('/shelf_storage/{id}/edit', [ShelfStorageController::class, 'edit'])->name('shelf_storage.edit')->middleware(StockerMiddleware::class);
+    Route::put('/shelf_storage/{id}', [ShelfStorageController::class, 'update'])->name('shelf_storage.update')->middleware(StockerMiddleware::class);
+    Route::delete('/shelf_storage/{id}/delete', [ShelfStorageController::class, 'delete'])->name('shelf_storage.delete')->middleware(StockerMiddleware::class);
+    Route::get('/shelf_storage/create', [ShelfStorageController::class, 'create'])->middleware(StockerMiddleware::class);
 });

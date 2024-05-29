@@ -29,7 +29,7 @@
                       <div class="col-md-6">
                         <select name="roles" class="form-control" >
                             <option value="Admin">Admin</option>
-                            <option value="Accountat">Accountant</option>
+                            <option value="Accountant">Accountant</option>
                             <option value="Stocker">Stocker</option>
                         </select> 
                     </div>
