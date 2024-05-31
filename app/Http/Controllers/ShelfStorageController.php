@@ -31,7 +31,9 @@ class ShelfStorageController extends Controller
     // Method to display the form for editing a ShelfStorage record
     public function edit($id) {
         $shelfStorage = ShelfStorage::findOrFail($id);
-        return view('shelf_storage.edit', compact('shelfStorage'));
+        $products = Product::all();
+        $shelves = Shelf::all();
+        return view('shelfStorage.edit', compact('shelfStorage', 'products', 'shelves'));
     }
 
     // Method to update an existing ShelfStorage record
@@ -56,11 +58,12 @@ class ShelfStorageController extends Controller
         $shelfStorage->delete();
 
         return redirect()->intended('shelf_storage/index')
-        ->with('success', 'Shelf created successfully.');
+        ->with('success', 'Shelf deleted successfully.');
     }
 
     // Method to display all ShelfStorage records (index method)
     public function index() {
-        return view('shelfStorage.index', ['shelfStorages' => ShelfStorage::all()]);
+        $shelfStorages = ShelfStorage::with('product', 'shelf')->get();
+        return view('shelfStorage.index', ['shelfStorages' => $shelfStorages]);
     }
 }

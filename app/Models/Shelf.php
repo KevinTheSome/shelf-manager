@@ -12,4 +12,8 @@ class Shelf extends Model
     protected $fillable = [
         'name',
     ];
+
+    // public function shelfStorages() {
+    //     return $this->hasMany(ShelfStorage::class);
+    // }
 }

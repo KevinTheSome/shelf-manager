@@ -10,8 +10,8 @@
                 <thead>
                     <tr>
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">ID</th>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Product ID</th>
-                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Shelf ID</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Product</th>
+                        <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Shelf</th>
                         <th class="bg-yellow-600 px-5 py-3 border-b-2 border-yellow-900 text-left text-xs font-semibold text-yellow-900 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
@@ -19,8 +19,8 @@
                     @foreach ($shelfStorages as $storage)
                         <tr>
                             <td class="py-2 px-4 border-b">{{ $storage->id }}</td>
-                            <td class="py-2 px-4 border-b">{{ $storage->product_id }}</td>
-                            <td class="py-2 px-4 border-b">{{ $storage->shelf_id }}</td>
+                            <td class="py-2 px-4 border-b">{{ $storage->product->name }}</td>
+                            <td class="py-2 px-4 border-b">{{ $storage->shelf->name }}</td>
                             <td class="py-2 px-4 border-b">
                                 <a href="{{ route('shelf_storage.edit', $storage->id) }}" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Edit</a>
                                 <form action="{{ route('shelf_storage.delete', $storage->id) }}" method="POST" class="inline-block">

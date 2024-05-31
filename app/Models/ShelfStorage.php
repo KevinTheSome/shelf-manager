@@ -13,4 +13,13 @@ class ShelfStorage extends Model
         'shelf_id',
         'product_id',
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
+
+    // Relationship with Shelf
+    public function shelf() {
+        return $this->belongsTo(Shelf::class);
+    }
 }
