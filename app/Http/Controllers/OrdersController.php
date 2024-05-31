@@ -80,7 +80,7 @@ class OrdersController extends Controller
         $order->save();
 
         $report = new Report();
-        $report->action = 'New order created of' . $request->product_id . 'status' . $request->status;
+        $report->action = 'New order created of ' . $request->product_id . ' status ' . $request->status;
         $report->time = date('Y-m-d H:i:s');
         $report->user_id = Auth::user()->id;
         $report->save();
