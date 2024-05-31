@@ -46,7 +46,8 @@ class ShelfStorageController extends Controller
         $shelfStorage->shelf_id = $request->shelf_id;
         $shelfStorage->save();
 
-        return redirect()->route('shelf_storage.index')->with('success', 'Shelf Storage updated successfully.');
+        return redirect()->intended('shelf_storage/index')
+            ->with('success', 'Shelf updated successfully.');
     }
 
     // Method to delete a ShelfStorage record
@@ -54,7 +55,8 @@ class ShelfStorageController extends Controller
         $shelfStorage = ShelfStorage::findOrFail($id);
         $shelfStorage->delete();
 
-        return redirect()->route('shelf_storage.index')->with('success', 'Shelf Storage deleted successfully.');
+        return redirect()->intended('shelf_storage/index')
+        ->with('success', 'Shelf created successfully.');
     }
 
     // Method to display all ShelfStorage records (index method)
