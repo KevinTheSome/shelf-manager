@@ -1,7 +1,7 @@
 <x-layout title="Shelf-Manager">
 
 
-    <h1 class="text-yellow-900 text-center font-bold text-4xl bg-yellow-600"><br>Welcome To Shelf-Manager</h1>
+    <h1 class="text-yellow-900 text-center font-bold text-4xl bg-yellow-100"><br>Welcome To Shelf-Manager</h1>
 
 
     <section class="bg-yellow-100 bg-gray-900">

@@ -1,4 +1,7 @@
-<nav class="flex w-screen justify-center space-x-8 bg-yellow-100">
+<div>
+
+
+<nav class="bg-yellow-100 mx-auto flex items-center flex w-screen justify-between space-x-8 ">
     <a href="/dashboard" class="p-4 text-yellow-900 hover:text-yellow-400 transition">Dashboard</a>
 
     @if (auth()->user()->roles == 'Admin')
@@ -26,3 +29,13 @@
     @endif
 
 </nav>
+<div id="dropdown-menu" class="dropdown-menu md:hidden bg-gray-800 mt-2 space-y-2 p-2">
+      <a href="/dashboard" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Dashboard</a>
+      <a href="/admin" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Admin</a>
+      <a href="/products/index" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Products</a>
+      <a href="/orders" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Orders</a>
+      <a href="/report" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Report</a>
+      <a href="/shelf/index" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Shelves</a>
+      <a href="/shelf_storage/index" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md">Shelf storage</a>
+    </div>
+</div>

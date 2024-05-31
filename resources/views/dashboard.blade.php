@@ -3,7 +3,7 @@
 
 <section>
         <div class="container mx-auto">
-            <div class="bg-white rounded-lg shadow border bg-yellow-600 border-gray-700 mt-6">
+            <div class="bg-white rounded-lg shadow border bg-yellow-600 border-yellow-700 mt-6">
                 <div class="p-6">
                     <h1 class="text-center text-4xl font-bold leading-tight tracking-tight text-yellow-900 text-white mb-6">
                         Welcome to your Dashboard!
