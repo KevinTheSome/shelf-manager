@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
@@ -77,6 +78,12 @@ class OrdersController extends Controller
         $order->user_id = Auth::user()->id;
         $order->product_id = $request->product_id;
         $order->save();
+
+        $report = new Report();
+        $report->action = 'New order created of' . $request->product_id . 'status' . $request->status;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
 
         return redirect('/orders');
     }
