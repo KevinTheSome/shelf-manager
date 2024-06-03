@@ -22,7 +22,7 @@
                 @foreach($reports as $report)
                     <tr>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $report->id }}</td>
-                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $report->user_id }}</td>
+                        <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $report->name }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $report->time }}</td>
                         <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 text-sm">{{ $report->action }}</td>
 
