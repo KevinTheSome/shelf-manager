@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -38,6 +40,12 @@ class ProductController extends Controller
         $product->amount = $request->amount;
         $product->save();
 
+        $report = new Report();
+        $report->action = 'New Product created ' . $product->id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         return redirect()->intended('products/index')
             ->with('success', 'Product created successfully.');
     }
@@ -60,6 +68,12 @@ class ProductController extends Controller
         $product = Product::findOrFail($request->product_id);
         $product->update($request->all());
 
+        $report = new Report();
+        $report->action = 'Product edited ' . $request->product_id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         return redirect('/products/index');
     }
 
@@ -67,6 +81,12 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
+
+        $report = new Report();
+        $report->action = 'Product destroy ' . $id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
 
         return redirect('/products/index');
     }
