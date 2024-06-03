@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shelf;
+use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class ShelfController extends Controller
 {
@@ -25,6 +27,12 @@ class ShelfController extends Controller
         $shelf->name = $request->name;
         $shelf->save();
 
+        $report = new Report();
+        $report->action = 'New Shelf created ' . $shelf->id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         return redirect()->intended('shelf/index')
             ->with('success', 'Shelf created successfully.');
     }
@@ -45,6 +53,12 @@ class ShelfController extends Controller
         $shelf->name = $request->name;
         $shelf->save();
 
+        $report = new Report();
+        $report->action = 'Shelf edited ' . $request->shelf_id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         return redirect()->intended('shelf/index')
             ->with('success', 'Shelf updated successfully!');
     }
@@ -53,6 +67,12 @@ class ShelfController extends Controller
     {
         $shelf = Shelf::findOrFail($id);
         $shelf->delete();
+
+        $report = new Report();
+        $report->action = 'Shelf deleted ' . $id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
 
         return redirect('/shelf/index');
     }

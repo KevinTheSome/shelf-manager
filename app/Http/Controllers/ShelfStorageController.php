@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ShelfStorage;
 use App\Models\Product;
 use App\Models\Shelf;
+use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class ShelfStorageController extends Controller
 {
@@ -20,6 +22,12 @@ class ShelfStorageController extends Controller
         $shelfStorage->product_id = $request->product_id;
         $shelfStorage->shelf_id = $request->shelf_id;
         $shelfStorage->save();
+
+        $report = new Report();
+        $report->action = 'New Shelf Storage created ' . $shelfStorage->id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
 
         return redirect('/shelf_storage/index');
     }
@@ -48,6 +56,12 @@ class ShelfStorageController extends Controller
         $shelfStorage->shelf_id = $request->shelf_id;
         $shelfStorage->save();
 
+        $report = new Report();
+        $report->action = 'Shelf Storage updated ' . $shelfStorage->id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         return redirect()->intended('shelf_storage/index')
             ->with('success', 'Shelf updated successfully.');
     }
@@ -56,6 +70,12 @@ class ShelfStorageController extends Controller
     public function delete($id) {
         $shelfStorage = ShelfStorage::findOrFail($id);
         $shelfStorage->delete();
+
+        $report = new Report();
+        $report->action = 'Shelf Storage deleted ' . $id;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
 
         return redirect()->intended('shelf_storage/index')
         ->with('success', 'Shelf deleted successfully.');

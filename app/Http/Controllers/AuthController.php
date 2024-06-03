@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -29,6 +30,12 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
+            $report = new Report();
+            $report->action = 'New User logged in ' .  Auth::user()->name;
+            $report->time = date('Y-m-d H:i:s');
+            $report->user_id = Auth::user()->id;
+            $report->save();
+
             return redirect()->intended('/dashboard');
         }
  
@@ -53,12 +60,25 @@ class AuthController extends Controller
         $user->roles = $request->input('roles');
         $user->save();
 
+        $report = new Report();
+        $report->action = 'New User registered ' . $user->name;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = $user->id;
+        $report->save();
+
         return redirect()->intended('/login');  
     }
 
     public function logout()
     {
         session()->invalidate();
+
+        $report = new Report();
+        $report->action = 'User logged out ' .  Auth::user()->name;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         auth()->logout();
         return redirect()->intended('/login');
     }

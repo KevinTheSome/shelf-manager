@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -20,7 +22,16 @@ class AdminController extends Controller
     public function delete($id)
     {
         $user = User::find($id);
+
+        $report = new Report();
+        $report->action = 'User deleted ' . $user->name;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
+
         $user->delete();
+
+       
         
         return redirect()->intended('/admin/users');
     }
@@ -45,6 +56,12 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->roles = $request->role;
         $user->save();
+
+        $report = new Report();
+        $report->action = 'User updated ' . $user->name;
+        $report->time = date('Y-m-d H:i:s');
+        $report->user_id = Auth::user()->id;
+        $report->save();
         
         return redirect()->intended('/admin/users');
     }
