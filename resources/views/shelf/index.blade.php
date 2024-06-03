@@ -29,7 +29,7 @@
                                 <form action="{{ url('shelf/' . $shelf->id . '/delete') }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-900 text-white- py-1 px-3 rounded">Delete</button>
+                                    <button type="submit" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Delete</button>
                                 </form>
                             </td>
                         </tr>

@@ -5,7 +5,7 @@
         <div class="mb-4 text-right">
             <a href="/shelf_storage/create" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-900">Add New Storage</a>
         </div>
-        <div class="bg-white shadow-md rounded overflow-hidden">
+        <div class="bg-yellow-100 shadow-md rounded overflow-hidden">
             <table class="min-w-full bg-white">
                 <thead>
                     <tr>
@@ -18,11 +18,11 @@
                 <tbody>
                     @foreach ($shelfStorages as $storage)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $storage->id }}</td>
-                            <td class="py-2 px-4 border-b">{{ $storage->product->name }}</td>
-                            <td class="py-2 px-4 border-b">{{ $storage->shelf->name }}</td>
-                            <td class="py-2 px-4 border-b">
-                                <a href="{{ route('shelf_storage.edit', $storage->id) }}" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Edit</a>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $storage->id }}</td>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $storage->product->name }}</td>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">{{ $storage->shelf->name }}</td>
+                            <td class="bg-yellow-100 px-5 py-5 border-b border-yellow-400 bg-white text-sm">
+                                <a href="{{ route('shelf_storage.edit', $storage->id) }}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-900">Edit</a>
                                 <form action="{{ route('shelf_storage.delete', $storage->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')

@@ -33,7 +33,7 @@
                             <form action="{{ url('products/' . $product->id) }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                                <button type="submit" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Delete</button>
                             </form>
                         </td>
                     </tr>
